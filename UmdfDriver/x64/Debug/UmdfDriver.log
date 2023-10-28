@@ -1,0 +1,27 @@
+﻿  Building 'UmdfDriver' with toolset 'WindowsUserModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Debug\UmdfDriver.inf
+  Stamping [Version] section with DriverVer=10/27/2023,19.0.16.758
+  Device.c
+  Driver.c
+  Queue.c
+  Generazione del codice in corso...
+     Creazione della libreria D:\Drivers\UmdfDriver\x64\Debug\UmdfDriver.lib e dell'oggetto D:\Drivers\UmdfDriver\x64\Debug\UmdfDriver.exp
+  UmdfDriver.vcxproj -> D:\Drivers\UmdfDriver\x64\Debug\UmdfDriver.dll
+  Done Adding Additional Store
+  Successfully signed: D:\Drivers\UmdfDriver\x64\Debug\UmdfDriver.dll
+  
+  Driver is 'Universal'.
+  ........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  D:\Drivers\UmdfDriver\x64\Debug\UmdfDriver\umdfdriver.cat
+  Done Adding Additional Store
+  Successfully signed: D:\Drivers\UmdfDriver\x64\Debug\UmdfDriver\umdfdriver.cat
+  
