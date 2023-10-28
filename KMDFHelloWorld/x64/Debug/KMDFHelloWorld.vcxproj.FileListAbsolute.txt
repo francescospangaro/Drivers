@@ -1,0 +1,1 @@
+D:\Drivers\KMDFHelloWorld\x64\Debug\KMDFHelloWorld.sys
