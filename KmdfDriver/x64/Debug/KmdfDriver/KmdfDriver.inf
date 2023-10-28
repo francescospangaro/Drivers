@@ -1,0 +1,80 @@
+;
+; KmdfDriver.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System ; TODO: specify appropriate Class
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=KmdfDriver.cat
+DriverVer = 10/28/2023,15.30.33.78
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+KmdfDriver_Device_CoInstaller_CopyFiles = 11
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+KmdfDriver.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%KmdfDriver.DeviceDesc%=KmdfDriver_Device, Root\KmdfDriver ; TODO: edit hw-id
+
+[KmdfDriver_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+KmdfDriver.sys
+
+;-------------- Service installation
+[KmdfDriver_Device.NT.Services]
+AddService = KmdfDriver,%SPSVCINST_ASSOCSERVICE%, KmdfDriver_Service_Inst
+
+; -------------- KmdfDriver driver install sections
+[KmdfDriver_Service_Inst]
+DisplayName    = %KmdfDriver.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\KmdfDriver.sys
+
+;
+;--- KmdfDriver_Device Coinstaller installation ------
+;
+
+[KmdfDriver_Device.NT.CoInstallers]
+AddReg=KmdfDriver_Device_CoInstaller_AddReg
+CopyFiles=KmdfDriver_Device_CoInstaller_CopyFiles
+
+[KmdfDriver_Device_CoInstaller_AddReg]
+;
+
+
+[KmdfDriver_Device_CoInstaller_CopyFiles]
+;
+
+
+[KmdfDriver_Device.NT.Wdf]
+KmdfService =  KmdfDriver, KmdfDriver_wdfsect
+[KmdfDriver_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+DiskName = "KmdfDriver Installation Disk"
+KmdfDriver.DeviceDesc = "KmdfDriver Device"
+KmdfDriver.SVCDESC = "KmdfDriver Service"

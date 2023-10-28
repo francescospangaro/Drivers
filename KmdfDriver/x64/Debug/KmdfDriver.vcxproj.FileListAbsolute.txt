@@ -1,0 +1,1 @@
+D:\Drivers\KmdfDriver\x64\Debug\KmdfDriver.sys
